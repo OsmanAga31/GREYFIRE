@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 688932598203740630}
   - component: {fileID: 8227156167984275695}
   - component: {fileID: 9044141317711655099}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 643343285029824728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.517, z: 0}
+  m_LocalPosition: {x: 0, y: 0.51699996, z: 0.313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,7 +62,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 80
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 3362577190878456891}
   - component: {fileID: 5606297362159481812}
   - component: {fileID: 2620670291219237114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 5787683905497955472}
   - component: {fileID: 2790184331763363325}
   - component: {fileID: 4597336349605521816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,8 +281,8 @@ Transform:
   m_GameObject: {fileID: 4372601178990261318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.344}
-  m_LocalScale: {x: 0.5, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.107}
+  m_LocalScale: {x: 0.67, y: 0.2, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2678986085732459073}
@@ -370,7 +370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9083741596479348661}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CinemachineTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 6250415601963184362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.517, z: 0}
+  m_LocalPosition: {x: 0, y: 0.517, z: 0.313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -402,7 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1245427313917741115}
   - component: {fileID: 6217961866060388407}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 1914744528062974432}
   - component: {fileID: 2522172342806159784}
   - component: {fileID: 8469852849520148242}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualMovementSpeed: 10
-  jumpStrength: 300
+  sneakSpeedMultiplier: 0.5
+  jumpStrength: 400
+  groundCheckHeightOffset: 0.05
+  groundCheckRadius: 0.1
+  groundCheckDistance: 0.15
+  layerToIgnore:
+    serializedVersion: 2
+    m_Bits: 8
   cinemachineCameraTarget: {fileID: 2678986085732459073}
 --- !u!54 &1914744528062974432
 Rigidbody:
@@ -500,7 +507,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 80
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -641,6 +648,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 497842df-12d6-43aa-bb32-56492ef540f1
+    m_ActionName: 'Player/Slide[/Keyboard/ctrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
