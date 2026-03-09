@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -109,7 +108,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void PlayerRotation()
     {
-        if (cinemachineCameraTarget == null) return;
+        if (!cinemachineCameraTarget) return;
 
         Vector3 targetEuler = cinemachineCameraTarget.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0f, targetEuler.y, 0f);
@@ -122,5 +121,26 @@ public class PlayerController : MonoBehaviour
     {
         PlayerRotation();
     }
+    
+    private void OnDestroy()
+    {
+        UnscribeControlls();
+    }
 
+    private void OnDisable()
+    {
+        UnscribeControlls();
+    }
+
+    private void UnscribeControlls()
+    {
+        // Unsubscribe from input events to prevent memory leaks
+        if (playerInput != null)
+        {
+            playerInput.actions["Move"].performed -= OnMove;
+            playerInput.actions["Move"].canceled -= OnMove;
+            playerInput.actions["Jump"].performed -= OnJump;
+            playerInput.actions["Jump"].canceled -= OnJump;
+        }
+    }
 }
