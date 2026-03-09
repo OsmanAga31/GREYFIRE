@@ -506,51 +506,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1914744528062974432, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597336349605521816, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6867412057240714363, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9044141317711655099, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
-      propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.Gain
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9044141317711655099, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
-      propertyPath: m_ControllerManager.Controllers.Array.data[1].Input.Gain
-      value: -5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6867412057240714363, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4086435526695721750}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
---- !u!1 &4086435526695721747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6867412057240714363, guid: 8d1fd5f246638624ab2799c6730ebefa, type: 3}
-  m_PrefabInstance: {fileID: 4086435526695721746}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4086435526695721750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4086435526695721747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6eefdfb6a1a2604c8861d27977d3def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
