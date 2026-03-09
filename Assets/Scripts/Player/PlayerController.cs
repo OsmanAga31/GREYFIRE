@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider)), RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        isPlayerMovementLocked = true;
+        isPlayerMovementLocked = false;
         
         playerInput.actions["Move"].performed += OnMove;
         playerInput.actions["Move"].canceled += OnMove;
@@ -91,7 +92,6 @@ public class PlayerController : MonoBehaviour
         moveDirection = cameraTransform.TransformDirection(moveDirection);
         moveDirection.y = 0; // Prevent vertical movement from camera tilt
         rb.MovePosition(rb.position + moveDirection * (actualMovementSpeed * Time.fixedDeltaTime));
-        RotatePlayer(moveDirection);
     }
     
     private void OnCollisionEnter(Collision collision)
@@ -104,15 +104,23 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Rotates the player to face the direction of movement.
-    /// </summary> <param name="movementDirection">The direction the player is moving towards.</param>
-    private void RotatePlayer(Vector3 movementDirection)
+    /// Rotates the player to face the direction of the camera's Y (yaw) axis.
+    /// Called in LateUpdate to ensure camera has updated.
+    /// </summary>
+    private void PlayerRotation()
     {
-        if (movementDirection.sqrMagnitude > 0.01f)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-        }
+        if (cinemachineCameraTarget == null) return;
+
+        Vector3 targetEuler = cinemachineCameraTarget.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, targetEuler.y, 0f);
+    }
+
+    /// <summary>
+    /// Ensures player rotation is updated after camera movement.
+    /// </summary>
+    private void LateUpdate()
+    {
+        PlayerRotation();
     }
 
 }
