@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c19455510a642508201c0aa797995eb, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: Shotgun
   damageType: 0
-  baseDamage: 0
-  fireRate: 0
+  baseDamage: 40
+  fireRate: 1
   projectilePrefab: {fileID: 0}
   spreadSettings:
-    enabled: 0
-    count: 0
-    angle: 0
+    enabled: 1
+    count: 8
+    angle: 0.2
   aoeSettings:
-    enabled: 0
-    radius: 0
+    enabled: 1
+    radius: 20

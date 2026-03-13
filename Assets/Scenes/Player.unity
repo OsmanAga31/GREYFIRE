@@ -1949,7 +1949,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefabs:
   - {fileID: 8396228966304684153, guid: 9a13491cead17f24ba552dce2d9e8eea, type: 3}
-  index: 0
+  BPindex: 0
+  weaponDatas:
+  - {fileID: 11400000, guid: 99dda4ee7d5f855428d1512531b97390, type: 2}
+  - {fileID: 11400000, guid: b9ae9517b9be9314eaabfb974506a502, type: 2}
+  WDindex: 1
   paused: 0
   spawnInterval: 1.5
 --- !u!4 &698002463

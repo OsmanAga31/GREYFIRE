@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Rifle
   damageType: 0
-  baseDamage: 1
+  baseDamage: 10
   fireRate: 1
   projectilePrefab: {fileID: 0}
-  spreadShot: 0
-  spreadCount: 0
-  spreadAngle: 0
-  isAOE: 0
-  aoeRadius: 0
-  isThrowable: 0
+  spreadSettings:
+    enabled: 0
+    count: 0
+    angle: 0
+  aoeSettings:
+    enabled: 0
+    radius: 0
