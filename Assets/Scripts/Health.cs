@@ -13,7 +13,6 @@ public class Health : MonoBehaviour, IDamagable
     [SerializeField] private float damageEffectDuration = 0.1f; // Duration for visual feedback when taking damage
     
     [Header("Damage Type Settings")]
-    [SerializeField] private DamageType ownDamageType; // Enum to specify the type of damage this object takes
     [SerializeField] private float BalisitcMultiplier = 1f; // Multiplier for ballistic damage
     [SerializeField] private float ArcaneMultiplier = 1f; // Multiplier for arcane damage
     [SerializeField] private float ExplosiveMultiplier = 1f; // Multiplier for explosive damage
@@ -120,7 +119,7 @@ public class Health : MonoBehaviour, IDamagable
             case DamageType.Explosive:
                 damageMultiplier = ExplosiveMultiplier;
                 break;
-            case DamageType.Kinteitc:
+            case DamageType.Kinetic:
                 damageMultiplier = KineticMultiplier;
                 break;
             case DamageType.Melee:
@@ -134,12 +133,3 @@ public class Health : MonoBehaviour, IDamagable
     
 }
 
-public enum DamageType
-{
-    Ballistic,
-    Hybrid,
-    Arcane,
-    Explosive,
-    Kinteitc,
-    Melee,
-}

@@ -687,12 +687,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 844288036394889138}
+  - component: {fileID: 8779823051188171961}
   - component: {fileID: 3525948336982082956}
   - component: {fileID: 1914744528062974432}
   - component: {fileID: 2522172342806159784}
   - component: {fileID: 8469852849520148242}
-  - component: {fileID: 6055108727821801394}
   - component: {fileID: 1778380852255376741}
+  - component: {fileID: 8567137965576567322}
   m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
@@ -717,6 +718,30 @@ Transform:
   - {fileID: 9083741596479348661}
   m_Father: {fileID: 1245427313917741115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8779823051188171961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612764924306501931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a72081117d40514ebe2590a790172e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthDisplay: {fileID: 1778380852255376741}
+  isVulnerable: 1
+  animator: {fileID: 0}
+  damageEffectDuration: 0.1
+  BalisitcMultiplier: 1.25
+  ArcaneMultiplier: 1
+  ExplosiveMultiplier: 1
+  KineticMultiplier: 1
+  MeleeMultiplier: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3525948336982082956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,30 +924,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6055108727821801394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8612764924306501931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8716c2872b656c947a4ad617bdd2a9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthDisplay: {fileID: 0}
-  isVulnerable: 1
-  animator: {fileID: 0}
-  ownDamageType: 1
-  BalisitcMultiplier: 1
-  ArcaneMultiplier: 1
-  ExplosiveMultiplier: 1
-  KineticMultiplier: 1
-  MeleeMultiplier: 1
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1778380852255376741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,3 +937,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 9108844566649434488}
+--- !u!95 &8567137965576567322
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612764924306501931}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
