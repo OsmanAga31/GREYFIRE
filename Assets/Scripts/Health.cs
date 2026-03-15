@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamagable
 {
-    private float health = 100f;
+    [SerializeField] private float health = 100f;
     private float damageMultiplier = 1f; // Multiplier to adjust damage taken based on damage type or other factors
     private Renderer objectRenderer; // Reference to the Renderer component for visual feedback
     
     [SerializeField] private HealthDisplay healthDisplay; // Helper class to manage health display UI
     [SerializeField] private bool isVulnerable = false; // Flag to indicate if the object is currently vulnerable
-    [SerializeField] private Animator animator; // Reference to the Animator component for playing damage animations
+    [SerializeField] protected Animator animator; // Reference to the Animator component for playing damage animations
     [SerializeField] private float damageEffectDuration = 0.1f; // Duration for visual feedback when taking damage
     
     [Header("Damage Type Settings")]
@@ -37,7 +37,7 @@ public class Health : MonoBehaviour, IDamagable
         set { isVulnerable = value; }
     }
     
-    public void TakeDamage(float damageAmount, DamageType damageType)
+    public virtual void TakeDamage(float damageAmount, DamageType damageType)
     {
         Debug.Log($"{gameObject.name} took " + damageAmount + " damage!");
         // Implement health reduction logic here
@@ -54,7 +54,7 @@ public class Health : MonoBehaviour, IDamagable
         UpdateHealthDisplay();
     }
     
-    public void Heal(float healAmount)
+    public virtual void Heal(float healAmount)
     {
         Debug.Log($"{gameObject.name} healed " + healAmount + " health!");
         // Implement health restoration logic here
@@ -63,7 +63,7 @@ public class Health : MonoBehaviour, IDamagable
         UpdateHealthDisplay();
     }
     
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log($"{gameObject.name} has died!");
         PlayDeathAnimation(); // Play death animation
@@ -72,7 +72,7 @@ public class Health : MonoBehaviour, IDamagable
         
     }
     
-    private void PlayDamageEffect()
+    public virtual void PlayDamageEffect()
     {
         if (objectRenderer != null)
         {
@@ -89,7 +89,7 @@ public class Health : MonoBehaviour, IDamagable
         objectRenderer.material.color = originalColor; // Revert to original color
     }
     
-    private void PlayDeathAnimation()
+    public virtual void PlayDeathAnimation()
     {
         if (animator != null)
         {
@@ -97,7 +97,7 @@ public class Health : MonoBehaviour, IDamagable
         }   
     }
     
-    public void UpdateHealthDisplay()
+    public virtual void UpdateHealthDisplay()
     {
         Debug.Log($"{gameObject.name} health updated: " + health);
         if (healthDisplay != null)
@@ -106,7 +106,7 @@ public class Health : MonoBehaviour, IDamagable
         }
     }
 
-    public void HandleDamageType(DamageType damageType)
+    private void HandleDamageType(DamageType damageType)
     {
         switch (damageType)
         {
