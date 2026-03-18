@@ -105,6 +105,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5360683131785772904}
   - component: {fileID: 5615497917579445399}
+  - component: {fileID: 632342067903107822}
+  - component: {fileID: 6217229266817737802}
+  - component: {fileID: 5985590553813294987}
   m_Layer: 0
   m_Name: training_dummy
   m_TagString: Untagged
@@ -151,6 +154,66 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &632342067903107822
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697017240656324050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.13, y: 1.83, z: 1}
+  m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!114 &6217229266817737802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697017240656324050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118a6bb58135ed34fafa47044aa15d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textAnimation: {fileID: 11400000, guid: 34b0e5858b9e6124e8925ef49abfc740, type: 2}
+--- !u!114 &5985590553813294987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697017240656324050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530ccaba3ddc45699cd7760e25b50902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthDisplay: {fileID: 0}
+  isVulnerable: 1
+  animator: {fileID: 5615497917579445399}
+  damageEffectDuration: 0.1
+  BalisitcMultiplier: 1
+  ArcaneMultiplier: 1
+  ExplosiveMultiplier: 1
+  KineticMultiplier: 1
+  MeleeMultiplier: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  damageNumbers: {fileID: 0}
 --- !u!1 &6774080502169825540
 GameObject:
   m_ObjectHideFlags: 0

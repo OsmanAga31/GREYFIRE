@@ -24,19 +24,25 @@ public class BulletSpawner : MonoBehaviour
         GameObject bulletPrefab = bulletPrefabs[BPindex];
         bulletPrefab.GetComponent<Projectile>().weaponData = weaponDatas[WDindex]; // Assign the selected weapon data to the bullet's Projectile component
         
-        // handle weaponData spreadcount
+        // Handle weaponData spread count
         if (weaponDatas[WDindex].spreadSettings.enabled)
         {
             // If spread is enabled, spawn multiple bullets based on the spread count
             for (int i = 0; i < weaponDatas[WDindex].spreadSettings.count; i++)
             {
-                Instantiate(bulletPrefab, transform.position, transform.rotation);
+                SpawnBullet(bulletPrefab);
             }
         } 
         else
             // Instantiate the selected bullet prefab at the spawner's position and rotation
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            SpawnBullet(bulletPrefab);
     }
-    
-    
+
+    private void SpawnBullet(GameObject bulletPrefab)
+    {
+        GameObject bul = PoolManager.Instance.GetProjectile(weaponDatas[WDindex].projectileVariant); // Get a projectile from the pool
+        bul.GetComponent<Projectile>().AddPlayerToHitLayer(); // Add the Player layer to the projectile's hit layers to allow it to hit player objects
+        bul.transform.position = bulletPrefab.transform.position;
+        bul.transform.rotation = bulletPrefab.transform.rotation;
+    }
 }

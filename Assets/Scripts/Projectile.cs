@@ -1,16 +1,19 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] public WeaponData weaponData; // Reference to the weapon data scriptable object
-    [SerializeField] private float speed = 20f; // Speed of the projectile
-    [SerializeField] private LayerMask hitLayers; // Layer mask to specify which layers the projectile can hit
-    [SerializeField] private float lifetime = 0.5f; // Time after which the projectile will be destroyed if it doesn't hit anything
+    [SerializeField] private float speed; // Speed of the projectile
+    [SerializeField, Tooltip("Layer mask to specify which layers the projectile can hit")] private LayerMask hitLayers; // Layer mask to specify which layers the projectile can hit
+    [SerializeField] private float lifetime; // Time after which the projectile will be destroyed if it doesn't hit anything
     [SerializeField] private Rigidbody rb; // Reference to the Rigidbody component for physics-based movement
+    [SerializeField, Tooltip("Whether the projectile should rotate to face its direction of travel, useful for projectiles with a clear front like arrows or rockets")] private bool lookRotation = true; // Whether the projectile should rotate to face its direction of travel, useful for projectiles with a clear front like arrows or rockets
+    [SerializeField] private bool isDangerous = true;
     // Hit effects and sounds
     
-    private Collider[] results = new Collider[20]; // Array to store results of area of effect damage checks
+    private Collider[] results; // Array to store results of area of effect damage checks
     private int lastHintCount = 0;
     
     private void Start()
@@ -19,18 +22,40 @@ public class Projectile : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
-        rb.useGravity = false; // Disable gravity for the projectile to ensure it travels in a straight line
+
+        if (weaponData.spreadSettings.enabled)
+            results = new Collider[20];
         
-        // Destroy the projectile after its lifetime expires
-        Destroy(gameObject, lifetime);
+        // Return the projectile after its lifetime expires
+        StartCoroutine(ReturnBulletAfterLifeTime());
     }
 
-    private void OnEnable()
+    private IEnumerator ReturnBulletAfterLifeTime()
     {
-        Shoot();
+        yield return new WaitForSeconds(lifetime);
+        ReturnBullet();
     }
 
-    private void Shoot()
+    // private void OnEnable()
+    // {
+    //     Shoot();
+    // }
+
+    private void FixedUpdate()
+    {
+        if (rb.linearVelocity.sqrMagnitude >= 1f && lookRotation)
+        {
+            // Rotate the projectile to face its direction of travel
+            transform.localRotation =  Quaternion.LookRotation(rb.linearVelocity.normalized); 
+        }
+    }
+
+    public void AddPlayerToHitLayer()
+    {
+        hitLayers |= (1 << LayerMask.NameToLayer("Player")); // Add the Player layer to the hitLayers mask to allow the projectile to hit player objects
+    }
+
+    public void Shoot()
     {
         if (weaponData.spreadSettings.enabled)
         {
@@ -46,8 +71,12 @@ public class Projectile : MonoBehaviour
             
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
+        lookRotation = false; // Stop rotating on collision to prevent jittering when hitting objects
+        if (!isDangerous) return;
+        isDangerous = false; // Set to false to prevent multiple hits from the same projectile
+        
         float damage = weaponData.baseDamage; // Get the base damage from the weapon data
         
         if (weaponData.spreadSettings.enabled)
@@ -64,10 +93,6 @@ public class Projectile : MonoBehaviour
                 // Perform an area of effect damage around the hit point
                 lastHintCount = Physics.OverlapSphereNonAlloc(transform.position, weaponData.aoeSettings.radius, results, hitLayers);
 
-                // visualize the sphere
-                
-                
-                
                 foreach (Collider hitCollider in results)
                 {
                     DoDamage(other, damage);
@@ -77,16 +102,19 @@ public class Projectile : MonoBehaviour
             {
                 DoDamage(other, damage);
             }
-            
-            // Destroy the projectile upon hitting an object
-            Destroy(gameObject);
+
         }
     }
 
-    private void DoDamage(Collider other, float damage)
+    private void ReturnBullet()
+    {
+        PoolManager.Instance.ReturnProjectile(weaponData.projectileVariant, gameObject); // Return the projectile to the pool after it hits something
+    }
+
+    private void DoDamage(Collision other, float damage)
     {
         // If the hit object has an IDamagable interface, apply damage to it
-        if (other.TryGetComponent<IDamagable>(out IDamagable damagable))
+        if (other.gameObject.TryGetComponent<IDamagable>(out IDamagable damagable))
         {
             damagable.TakeDamage(damage, weaponData.damageType);
         }
