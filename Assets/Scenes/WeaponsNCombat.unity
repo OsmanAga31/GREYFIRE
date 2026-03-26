@@ -72249,6 +72249,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4052558394599829454, guid: c7011d255977f7f4a9170fb277f41678, type: 3}
+      propertyPath: stopAction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289506315901445093, guid: c7011d255977f7f4a9170fb277f41678, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4833953483629935120, guid: c7011d255977f7f4a9170fb277f41678, type: 3}
       propertyPath: m_Name
       value: MuzzleFlash
@@ -72304,6 +72312,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1518216975471235235, guid: 9a13491cead17f24ba552dce2d9e8eea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682763634838966429, guid: 9a13491cead17f24ba552dce2d9e8eea, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8396228966304684153, guid: 9a13491cead17f24ba552dce2d9e8eea, type: 3}
