@@ -16,11 +16,12 @@ MonoBehaviour:
   damageType: 0
   baseDamage: 40
   fireRate: 1
-  projectilePrefab: {fileID: 0}
+  projectileVariant: 0
   spreadSettings:
     enabled: 1
     count: 8
     angle: 0.2
   aoeSettings:
-    enabled: 1
+    enabled: 0
     radius: 20
+  rotationSpeed: 0

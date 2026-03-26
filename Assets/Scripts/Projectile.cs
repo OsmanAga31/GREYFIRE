@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -43,7 +44,7 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.linearVelocity.sqrMagnitude >= 1f && lookRotation)
+        if (lookRotation) //&& rb.linearVelocity.sqrMagnitude >= 1f)
         {
             // Rotate the projectile to face its direction of travel
             transform.localRotation =  Quaternion.LookRotation(rb.linearVelocity.normalized); 

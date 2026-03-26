@@ -16,7 +16,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private bool lookAtCrosshair = true;
     [SerializeField] private bool autoFire = true;
     [SerializeField] private WeaponData wd40;
-    [SerializeField] private GameObject parentGo;
     [SerializeField] private Camera mc;
     [SerializeField] private float maxRayDistance;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -27,8 +26,7 @@ public class Weapon : MonoBehaviour
     
     private void Start()
     {
-        parentGo = transform.parent.gameObject;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         ps = GetComponent<ParticleSystem>();
         mc =  Camera.main;
     }
@@ -39,7 +37,7 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(mc.transform.position, mc.transform.forward, out hit, Mathf.Infinity))
         {
             Debug.DrawRay(mc.transform.position, mc.transform.forward * hit.distance, Color.yellow);
-            Debug.Log($"[{gameObject.name}] Hit: {hit.transform.name}");
+            Debug.Log($"[{((Component)this).gameObject.name}] Hit: {hit.transform.name}");
         }
         else
             Debug.DrawRay(mc.transform.position, mc.transform.forward * 100f, Color.red);
@@ -50,9 +48,9 @@ public class Weapon : MonoBehaviour
             Vector3 targetPoint = hit.collider != null ? hit.point : GetMaxRayDistance;
             if (hit.distance < maxRayDistance)
                 targetPoint = GetMaxRayDistance;
-            Vector3 direction = targetPoint - parentGo.transform.position;
+            Vector3 direction = targetPoint - gameObject.transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            parentGo.transform.rotation = Quaternion.Slerp(parentGo.transform.rotation, targetRotation, Time.fixedDeltaTime * wd40.rotationSpeed);
+            gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, targetRotation, Time.fixedDeltaTime * wd40.rotationSpeed);
         }
 
 
