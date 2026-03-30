@@ -11,6 +11,8 @@ public enum ProjectileVariant
     KineticCharge,
     ArcaneOrb,
     
+
+    HitEffectDust
 }
 
 [Serializable]

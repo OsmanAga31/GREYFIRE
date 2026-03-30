@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     private float originalMovementSpeed;
     [SerializeField] private float sneakSpeedMultiplier = 0.5f; // Multiplier for movement speed when sneaking
     [SerializeField] private float jumpStrength;
-    
+    private bool doJump;
+
     [Header("Ground Check Settings")]
     [SerializeField] private float groundCheckHeightOffset = 0.05f; // Additional height offset for ground check to prevent false negatives
     [SerializeField] private float groundCheckRadius = 0.1f;
@@ -99,8 +100,11 @@ public class PlayerController : MonoBehaviour
         if (isPlayerMovementLocked) return;
         if (ctx.performed && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-            isGrounded = false;
+            doJump = true;
+        }
+        else if (ctx.canceled)
+        {
+            doJump = false;
         }
     }
 
@@ -148,6 +152,12 @@ public class PlayerController : MonoBehaviour
         moveDirection.y = 0; // Prevent vertical movement from camera tilt
         // rb.MovePosition(rb.position + moveDirection * (actualMovementSpeed * Time.fixedDeltaTime));
         rb.linearVelocity = new Vector3(moveDirection.x * actualMovementSpeed, rb.linearVelocity.y, moveDirection.z * actualMovementSpeed);
+
+        if (doJump && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
 
     /// <summary>

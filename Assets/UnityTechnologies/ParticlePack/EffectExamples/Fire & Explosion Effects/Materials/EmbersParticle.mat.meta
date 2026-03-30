@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 83e017d5c835b9e42b3b25240a43167b
+timeCreated: 1471532950
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 73777
+  packageName: Legacy Particle Pack
+  packageVersion: 4.0
+  assetPath: Assets/UnityTechnologies/ParticlePack/EffectExamples/Fire & Explosion
+    Effects/Materials/EmbersParticle.mat
+  uploadId: 684565
