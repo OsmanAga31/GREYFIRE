@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -12,12 +13,19 @@ public class Gun : MonoBehaviour
     public int Ammo
     {
         get { return ammo; }
-        set { ammo = value; }
+        set
+        {
+            ammo = value;
+            ammoText.text = ammo.ToString();
+        }
     }
 
     [SerializeField] private Camera fpsCam;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private GameObject impactEffect;
+    [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private TextMeshProUGUI weaponNameText;
+    [SerializeField] private Vector3 startPosition;
 
     private float nextTimeToFire = 0f;
 
@@ -26,10 +34,21 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
+        startPosition = transform.localPosition;
+
         if (ammo <= 0)
         {
             ammo = 10;
         }
+        ammoText.text = ammo.ToString();
+    }
+
+    private void OnEnable()
+    {
+        isShooting = false;
+        nextTimeToFire = 0f;
+        ammoText.text = ammo.ToString();
+        weaponNameText.text = gameObject.name;
     }
 
     // Update is called once per frame
@@ -49,11 +68,11 @@ public class Gun : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 0, -0.05f), Time.deltaTime * 15);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 0, -0.05f) + startPosition, Time.deltaTime * 15);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, Time.deltaTime * 3);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, startPosition, Time.deltaTime * 3);
         }
     }
 
@@ -62,6 +81,7 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play();
 
         ammo--;
+        ammoText.text = ammo.ToString();
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
