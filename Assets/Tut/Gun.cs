@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class Gun : MonoBehaviour, IItemAdder
@@ -10,6 +11,8 @@ public class Gun : MonoBehaviour, IItemAdder
     [SerializeField] private float impactForce;
 
     [SerializeField] private int ammo;
+    [SerializeField] private PlayerInput playerInput;
+
     public int Ammo
     {
         get { return ammo; }
@@ -49,6 +52,15 @@ public class Gun : MonoBehaviour, IItemAdder
         nextTimeToFire = 0f;
         ammoText.text = ammo.ToString();
         weaponNameText.text = gameObject.name;
+
+        playerInput.actions["Attack"].performed += StartShooting;
+        playerInput.actions["Attack"].canceled += StartShooting;
+    }
+
+    private void OnDisable()
+    {
+        playerInput.actions["Attack"].performed -= StartShooting;
+        playerInput.actions["Attack"].canceled -= StartShooting;
     }
 
     // Update is called once per frame

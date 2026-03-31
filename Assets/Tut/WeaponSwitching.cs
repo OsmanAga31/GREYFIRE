@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class WeaponSwitching : MonoBehaviour
 {
     [SerializeField] private int selectedWeapon = 0;
+    [SerializeField] private PlayerInput playerInput;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,10 +14,16 @@ public class WeaponSwitching : MonoBehaviour
         SelectWeapon();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
+        playerInput.actions["WeaponSelect"].performed += OnSelectWeapon;
+        playerInput.actions["Scroll"].performed += OnMouseWheel;
+    }
 
+    private void OnDisable()
+    {
+        playerInput.actions["WeaponSelect"].performed -= OnSelectWeapon;
+        playerInput.actions["Scroll"].performed -= OnMouseWheel;
     }
 
     private void SelectWeapon()
@@ -34,11 +42,10 @@ public class WeaponSwitching : MonoBehaviour
 
     public void OnSelectWeapon(CallbackContext ctx)
     {
-        int number = -1;
-        if (!ctx.performed && !int.TryParse(ctx.control.name, out number) && number < 0) return;
+        var number = 0;
+        if (!int.TryParse(ctx.control.name, out number)) return;
 
-
-        int weaponIndex = number - 1;
+        int weaponIndex = (number == 0) ? 9 : number - 1;
         if (weaponIndex >= 0 && weaponIndex < transform.childCount)
         {
             selectedWeapon = weaponIndex;
@@ -48,26 +55,18 @@ public class WeaponSwitching : MonoBehaviour
 
     public void OnMouseWheel(CallbackContext ctx)
     {
-        Debug.Log("Mouse wheel scrolled: " + ctx.ReadValue<float>());
-        int previousSelectedWeapon = selectedWeapon;
-
-        if (ctx.ReadValue<float>() > 0)
+        var scrollValue = ctx.ReadValue<Vector2>().y;
+        if (scrollValue > 0)
         {
-            selectedWeapon++;
-            if (selectedWeapon >= transform.childCount)
-                selectedWeapon = 0;
-        }
-        else if (ctx.ReadValue<float>() < 0)
-        {
-            selectedWeapon--;
-            if (selectedWeapon < 0)
-                selectedWeapon = transform.childCount - 1;
-        }
-        
-        if (previousSelectedWeapon != selectedWeapon)
-        {
+            selectedWeapon = (selectedWeapon + 1) % transform.childCount;
             SelectWeapon();
         }
+        else if (scrollValue < 0)
+        {
+            selectedWeapon = (selectedWeapon - 1 + transform.childCount) % transform.childCount;
+            SelectWeapon();
+        }
+
     }
 
 }

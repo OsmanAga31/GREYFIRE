@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class GrenadeThrower : MonoBehaviour, IItemAdder
@@ -10,6 +11,7 @@ public class GrenadeThrower : MonoBehaviour, IItemAdder
 
     [SerializeField] private TextMeshProUGUI grenadeText;
     [SerializeField] private int grenadeAmount = -1;
+    [SerializeField] private PlayerInput playerInput;
     public int GrenadeAmount
     {
         get { return grenadeAmount; }
@@ -29,6 +31,16 @@ public class GrenadeThrower : MonoBehaviour, IItemAdder
         {
             grenadeAmount = 3;
         }
+    }
+
+    private void OnEnable()
+    {
+        playerInput.actions["Grenade"].performed += OnThrow;
+    }
+
+    private void OnDisable()
+    {
+        playerInput.actions["Grenade"].performed -= OnThrow;
     }
 
     public void OnThrow(CallbackContext ctx)

@@ -98,7 +98,7 @@
                 },
                 {
                     "name": "WeaponSelect",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "32f612fc-fd4a-4957-94fd-12df861f689b",
                     "expectedControlType": "",
                     "processors": "",
@@ -113,6 +113,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "9b126657-b5b2-4a71-9cad-d1d895d4c2f4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -580,17 +589,6 @@
                 },
                 {
                     "name": "",
-                    "id": "fb1cb4e7-6e74-4c8d-8e8f-a207746bf84c",
-                    "path": "<Keyboard>/0",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponSelect",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ba117555-faa8-421b-8113-7d7532227683",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -690,12 +688,34 @@
                 },
                 {
                     "name": "",
+                    "id": "fb1cb4e7-6e74-4c8d-8e8f-a207746bf84c",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e1a26dfc-06f1-43cc-86e3-11cb3d94b157",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Grenade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b41258b-99b3-4115-b93f-2633552406d3",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

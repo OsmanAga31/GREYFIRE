@@ -150,8 +150,8 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(movementInput.x, 0, movementInput.y);
         moveDirection = cameraTransform.TransformDirection(moveDirection);
         moveDirection.y = 0; // Prevent vertical movement from camera tilt
-        // rb.MovePosition(rb.position + moveDirection * (actualMovementSpeed * Time.fixedDeltaTime));
-        rb.linearVelocity = new Vector3(moveDirection.x * actualMovementSpeed, rb.linearVelocity.y, moveDirection.z * actualMovementSpeed);
+        rb.MovePosition(rb.position + moveDirection * (actualMovementSpeed * Time.fixedDeltaTime));
+        //rb.linearVelocity = new Vector3(moveDirection.x * actualMovementSpeed, rb.linearVelocity.y, moveDirection.z * actualMovementSpeed);
 
         if (doJump && isGrounded)
         {
