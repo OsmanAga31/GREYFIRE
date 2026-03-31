@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IDamagable
+public class Health : MonoBehaviour, IDamagable, IItemAdder
 {
     [SerializeField] private float health = 100f;
     private float damageMultiplier = 1f; // Multiplier to adjust damage taken based on damage type or other factors
@@ -62,7 +62,11 @@ public class Health : MonoBehaviour, IDamagable
         
         UpdateHealthDisplay();
     }
-    
+    public void Add(int amount)
+    {
+        Heal(amount);
+    }
+
     public virtual void Die()
     {
         Debug.Log($"{gameObject.name} has died!");
@@ -130,6 +134,7 @@ public class Health : MonoBehaviour, IDamagable
                 break;
         }
     }
-    
+
+
 }
 

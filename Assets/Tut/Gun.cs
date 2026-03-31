@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, IItemAdder
 {
     [SerializeField] private float damage;
     [SerializeField] private float range;
@@ -116,6 +116,11 @@ public class Gun : MonoBehaviour
             isShooting = false;
             nextTimeToFire = 0f;
         }
+    }
+
+    public void Add(int amount)
+    {
+        Ammo += amount;
     }
 
 }

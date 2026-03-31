@@ -1,13 +1,27 @@
+using TMPro;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
-public class GrenadeThrower : MonoBehaviour
+public class GrenadeThrower : MonoBehaviour, IItemAdder
 {
     [SerializeField] private float throwForce = 30;
     [SerializeField] private GameObject grenadePrefab;
     [SerializeField] private Vector3 torque;
 
+    [SerializeField] private TextMeshProUGUI grenadeText;
     [SerializeField] private int grenadeAmount = -1;
+    public int GrenadeAmount
+    {
+        get { return grenadeAmount; }
+        set
+        {
+            grenadeAmount = value;
+            if (grenadeText != null)
+            {
+                grenadeText.text = grenadeAmount.ToString();
+            }
+        }
+    }
 
     private void Start()
     {
@@ -33,6 +47,11 @@ public class GrenadeThrower : MonoBehaviour
             rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
             rb.AddTorque(torque, ForceMode.VelocityChange);
         }
+    }
+
+    public void Add(int amount)
+    {
+        GrenadeAmount += amount;
     }
 
 }

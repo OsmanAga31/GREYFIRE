@@ -23,7 +23,12 @@ public class PlayerHealth : Health
         Debug.Log("The player has died!");
         // TODO Implement player death logic here, such as triggering a death animation or restarting the level
     }
-        
-        
-    
+
+     public void Add(int amount)
+    {
+            Heal(amount);
+    }
+
+
+
 }
