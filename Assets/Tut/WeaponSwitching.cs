@@ -40,7 +40,7 @@ public class WeaponSwitching : MonoBehaviour
     }
 
 
-    public void OnSelectWeapon(CallbackContext ctx)
+    public void OnSelectWeapon(CallbackContext ctx) // fixed with help of A.I. Claude - No Copy-Paste but look, understand and adapt
     {
         var number = 0;
         if (!int.TryParse(ctx.control.name, out number)) return;
