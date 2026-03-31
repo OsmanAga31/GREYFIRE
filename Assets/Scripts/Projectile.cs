@@ -47,7 +47,8 @@ public class Projectile : MonoBehaviour
         if (lookRotation) //&& rb.linearVelocity.sqrMagnitude >= 1f)
         {
             // Rotate the projectile to face its direction of travel
-            transform.localRotation =  Quaternion.LookRotation(rb.linearVelocity.normalized); 
+            Vector3 direction = rb.linearVelocity.normalized;
+            transform.localRotation =  direction == Vector3.zero ? Quaternion.identity : Quaternion.LookRotation(direction);
         }
     }
 

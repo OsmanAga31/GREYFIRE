@@ -28,7 +28,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -37,7 +37,7 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
@@ -104,6 +104,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Grenade",
+                    "type": "Button",
+                    "id": "d3eff6a9-e33e-4c5f-9323-971d40ddd2bc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -676,6 +685,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "WeaponSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1a26dfc-06f1-43cc-86e3-11cb3d94b157",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grenade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
