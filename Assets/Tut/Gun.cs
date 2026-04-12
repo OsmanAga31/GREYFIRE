@@ -5,13 +5,13 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class Gun : MonoBehaviour, IItemAdder
 {
-    [SerializeField] private float damage;
-    [SerializeField] private float range;
-    [SerializeField] private float fireRate;
-    [SerializeField] private float impactForce;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float range;
+    [SerializeField] protected float fireRate;
+    [SerializeField] protected float impactForce;
 
     [SerializeField] private int ammo;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] protected PlayerInput playerInput;
 
     public int Ammo
     {
@@ -19,23 +19,22 @@ public class Gun : MonoBehaviour, IItemAdder
         set
         {
             ammo = value;
-            ammoText.text = ammo.ToString();
         }
     }
 
-    [SerializeField] private Camera fpsCam;
+    [SerializeField] protected Camera fpsCam;
     [SerializeField] private ParticleSystem muzzleFlash;
-    [SerializeField] private GameObject impactEffect;
-    [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] protected GameObject impactEffect;
+    [SerializeField] protected TextMeshProUGUI ammoText;
     [SerializeField] private TextMeshProUGUI weaponNameText;
     [SerializeField] private Vector3 startPosition;
 
     private float nextTimeToFire = 0f;
 
 
-    private bool isShooting;
+    protected bool isShooting;
 
-    private void Start()
+    protected virtual void Start()
     {
         startPosition = transform.localPosition;
 
@@ -46,7 +45,7 @@ public class Gun : MonoBehaviour, IItemAdder
         ammoText.text = ammo.ToString();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         isShooting = false;
         nextTimeToFire = 0f;
@@ -57,27 +56,28 @@ public class Gun : MonoBehaviour, IItemAdder
         playerInput.actions["Attack"].canceled += StartShooting;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         playerInput.actions["Attack"].performed -= StartShooting;
         playerInput.actions["Attack"].canceled -= StartShooting;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (ammo <= 0)
+        if (isShooting && ammo <= 0)
         {
             isShooting = false;
             nextTimeToFire = 0f;
-
+            
             // play empty click sound or show out of ammo UI here
-
             Debug.Log($"Weapon {gameObject.name} is out of ammo!");
         }
 
         if (isShooting && Time.time >= nextTimeToFire)
         {
+
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
             transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(0, 0, -0.05f) + startPosition, Time.deltaTime * 15);
@@ -88,9 +88,10 @@ public class Gun : MonoBehaviour, IItemAdder
         }
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
-        muzzleFlash.Play();
+        if ( muzzleFlash )
+            muzzleFlash.Play();
 
         ammo--;
         ammoText.text = ammo.ToString();
@@ -117,7 +118,7 @@ public class Gun : MonoBehaviour, IItemAdder
         }
     }
 
-    public void StartShooting(CallbackContext ctx)
+    public virtual void StartShooting(CallbackContext ctx)
     {
         if (ctx.performed){
             isShooting = true;

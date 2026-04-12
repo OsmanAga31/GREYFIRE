@@ -56,12 +56,12 @@ public class WeaponSwitching : MonoBehaviour
     public void OnMouseWheel(CallbackContext ctx)
     {
         var scrollValue = ctx.ReadValue<Vector2>().y;
-        if (scrollValue > 0)
+        if (scrollValue < 0)
         {
             selectedWeapon = (selectedWeapon + 1) % transform.childCount;
             SelectWeapon();
         }
-        else if (scrollValue < 0)
+        else if (scrollValue > 0)
         {
             selectedWeapon = (selectedWeapon - 1 + transform.childCount) % transform.childCount;
             SelectWeapon();

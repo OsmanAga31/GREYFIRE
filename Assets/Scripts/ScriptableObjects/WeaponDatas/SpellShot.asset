@@ -16,7 +16,7 @@ MonoBehaviour:
   damageType: 1
   baseDamage: 20
   fireRate: 2
-  projectileVariant: 0
+  projectileVariant: 2
   spreadSettings:
     enabled: 0
     count: 0

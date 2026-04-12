@@ -184,7 +184,13 @@ MonoBehaviour:
   throwForce: 15
   grenadePrefab: {fileID: 7114578416266144273, guid: 758fba353a3b0004f8ee2c6a90a9099b, type: 3}
   torque: {x: -10, y: 0, z: 5}
+  throwHand: {fileID: 0}
+  throwDelay: 0.5
+  throwOffset: 0.5
+  grenadeText: {fileID: 0}
   grenadeAmount: 3
+  playerInput: {fileID: 0}
+  HandLAnimator: {fileID: 0}
 --- !u!1 &1377700544906109340
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  playerInput: {fileID: 0}
 --- !u!1 &3529202361700180041
 GameObject:
   m_ObjectHideFlags: 0

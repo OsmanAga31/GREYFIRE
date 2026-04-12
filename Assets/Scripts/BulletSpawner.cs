@@ -22,7 +22,7 @@ public class BulletSpawner : MonoBehaviour
         if (paused) return; // If paused, do not spawn bullets
         
         GameObject bulletPrefab = bulletPrefabs[BPindex];
-        bulletPrefab.GetComponent<Projectile>().weaponData = weaponDatas[WDindex]; // Assign the selected weapon data to the bullet's Projectile component
+        //bulletPrefab.GetComponent<Projectile>().weaponData = weaponDatas[WDindex]; // Assign the selected weapon data to the bullet's Projectile component
         
         // Handle weaponData spread count
         if (weaponDatas[WDindex].spreadSettings.enabled)

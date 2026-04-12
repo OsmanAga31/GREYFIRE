@@ -89,7 +89,7 @@ public class Weapon : MonoBehaviour
         bul.transform.rotation = bulletSpawnPoint.rotation;
         // bul.transform.rotation = bulletSpawnPoint.rotation;
         Projectile bulPro = bul.GetComponent<Projectile>();
-        bulPro.weaponData = wd40;
+        //bulPro.weaponData = wd40;
         bulPro.Shoot();
         
     }
