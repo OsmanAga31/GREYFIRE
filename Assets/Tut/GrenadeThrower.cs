@@ -6,6 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class GrenadeThrower : MonoBehaviour, IItemAdder
 {
+    [SerializeField] private GrenadeThrower otherGT; // Reference to the other GrenadeThrower so they do not interfere with each other when throwing 
     [SerializeField] private float throwForce = 30;
     [SerializeField] private GameObject grenadePrefab;
     [SerializeField] private Vector3 torque;
@@ -14,11 +15,13 @@ public class GrenadeThrower : MonoBehaviour, IItemAdder
     [SerializeField] private float throwDelay = 0.5f; // Delay to sync with throw animation
     [SerializeField] private float throwOffset = 0.5f; // Upward offset to create a more natural arc
     private Coroutine throwCoroutine;
+    private bool isThrowing;
+    public bool IsThrowing => isThrowing;
 
 
     [SerializeField] private TextMeshProUGUI grenadeText;
     [SerializeField] private int grenadeAmount = -1;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] protected PlayerInput playerInput;
     [SerializeField] private Animator HandLAnimator;
     public int GrenadeAmount
     {
@@ -39,14 +42,19 @@ public class GrenadeThrower : MonoBehaviour, IItemAdder
         {
             grenadeAmount = 3;
         }
+
+        if (grenadeText != null)
+        {
+            grenadeText.text = grenadeAmount.ToString();
+        }
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         playerInput.actions["Grenade"].performed += OnThrow;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         playerInput.actions["Grenade"].performed -= OnThrow;
     }
@@ -56,15 +64,22 @@ public class GrenadeThrower : MonoBehaviour, IItemAdder
         if (!ctx.performed 
             || grenadeAmount <= 0 
             || throwCoroutine != null
-            || HandLAnimator.GetCurrentAnimatorStateInfo(0).IsName("Throw")) return;
+            || HandLAnimator.GetCurrentAnimatorStateInfo(0).IsName("Throw")
+            || (otherGT != null && otherGT.IsThrowing)
+            ) return;
 
-
-        throwCoroutine = StartCoroutine(ThrowGrenade());
-        grenadeAmount--;
+        isThrowing = true;
+        throwCoroutine = StartCoroutine(ThrowGrenade(true));
     }
 
-    private IEnumerator ThrowGrenade()
+    protected virtual IEnumerator ThrowGrenade(bool performThrow)
     {
+        if (!performThrow) yield break;
+
+        grenadeAmount--;
+        if (grenadeText != null)
+            grenadeText.text = grenadeAmount.ToString();
+
         GameObject grenade = Instantiate(grenadePrefab, throwHand.transform.position, grenadePrefab.transform.rotation);
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
         Grenade gr = grenade.GetComponent<Grenade>();
@@ -76,18 +91,24 @@ public class GrenadeThrower : MonoBehaviour, IItemAdder
         yield return new WaitForSeconds(throwDelay); // Delay to sync with throw animation
         if (rb != null)
         {
-            grenade.transform.parent = null; // Detach the grenade from the hand
-            var throwDirection = transform.forward + Vector3.up * throwOffset; // Add some upward force for a more natural arc
-            rb.isKinematic = false; // Make the grenade affected by physics again
-            rb.AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
-            rb.AddTorque(torque, ForceMode.VelocityChange);
-            gr.IsTimerActive = true; // Start the grenade's timer after throwing
+            ThrowGrenadeHelper(grenade, rb, gr);
         }
         yield return new WaitForSeconds(throwDelay);
         throwCoroutine = null;
+        isThrowing = false;
     }
 
-    public void Add(int amount)
+    protected virtual void ThrowGrenadeHelper(GameObject grenade, Rigidbody rb, Grenade gr)
+    {
+        grenade.transform.parent = null; // Detach the grenade from the hand
+        var throwDirection = transform.forward + Vector3.up * throwOffset; // Add some upward force for a more natural arc
+        rb.isKinematic = false; // Make the grenade affected by physics again
+        rb.AddForce(throwDirection * throwForce, ForceMode.VelocityChange);
+        rb.AddTorque(torque, ForceMode.VelocityChange);
+        gr.IsTimerActive = true; // Start the grenade's timer after throwing
+    }
+
+    public void Add(int amount, AmmoType type)
     {
         GrenadeAmount += amount;
     }

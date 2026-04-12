@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private CharacterController characterController;
+    //[SerializeField] private CharacterController characterController;
     [SerializeField] private GameObject[] items;
 
-    public void AddItem(ItemType itemType, int amount)
+    public void AddItem(AmmoType itemType, int amount)
     {
-        items[(int)itemType].GetComponent<IItemAdder>().Add(amount);
+        if (itemType == AmmoType.None || (int)itemType >= items.Length)
+        {
+            Debug.LogWarning("Invalid item type: " + itemType);
+            return;
+        }
+        items[(int)itemType].GetComponent<IItemAdder>().Add(amount, itemType);
     }
 
     public void OnControllerColliderHit(ControllerColliderHit hit)
@@ -24,11 +29,12 @@ public class InventoryManager : MonoBehaviour
     }
 
 }
-public enum ItemType
+public enum AmmoType
 {
     None,
     HealthPack,
     RifleAmmo,
-    PistolAmmo,
-    GrenadePack
+    SpellShotAmmo,
+    GrenadePack,
+    PistolAmmo
 }

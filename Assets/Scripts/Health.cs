@@ -62,7 +62,7 @@ public class Health : MonoBehaviour, IDamagable, IItemAdder
         
         UpdateHealthDisplay();
     }
-    public void Add(int amount)
+    public void Add(int amount, AmmoType type)
     {
         Heal(amount);
     }

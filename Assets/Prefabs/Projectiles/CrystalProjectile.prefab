@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8527335645271754814}
   - component: {fileID: 4989354187198272018}
   - component: {fileID: 5094149960092204637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flares
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4863,7 +4863,7 @@ GameObject:
   - component: {fileID: 2659557018332091238}
   - component: {fileID: -1274456550644077337}
   - component: {fileID: 2605829018330549104}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrystalProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9758,15 +9758,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b732b32982d0fb645b5e7e9e7b706e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
   damage: 25
   speed: 20
   hitLayers:
     serializedVersion: 2
-    m_Bits: 823
-  lifetime: 10
+    m_Bits: 831
+  lifetime: 15
   rb: {fileID: -1274456550644077337}
   lookRotation: 0
   isDangerous: 1
+  destroyOnHit: 1
 --- !u!54 &-1274456550644077337
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9786,7 +9788,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 200
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -9807,9 +9809,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -9826,7 +9828,7 @@ GameObject:
   - component: {fileID: 4779611160357089669}
   - component: {fileID: 8138882210237452461}
   - component: {fileID: 2028999310200144813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14729,7 +14731,7 @@ GameObject:
   - component: {fileID: 7942401655016944403}
   - component: {fileID: 7325626957981715343}
   - component: {fileID: 3956954571966494777}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IItemAdder
 {
-    public void Add(int amount);
+    public void Add(int amount, AmmoType type);
 }
