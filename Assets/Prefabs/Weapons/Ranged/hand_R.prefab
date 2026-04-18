@@ -339,6 +339,7 @@ MonoBehaviour:
   range: 100
   fireRate: 2
   impactForce: 12.5
+  ammoType: 3
   ammo: 100
   playerInput: {fileID: 0}
   fpsCam: {fileID: 0}
@@ -357,6 +358,8 @@ MonoBehaviour:
   projectile: {fileID: 2039931678086111586, guid: faed4523275ae75488a99a5ae24cdfb2, type: 3}
   projectileSpawnPoint: {fileID: 4367328732699062167}
   projDelay: 0.25
+  manaCost: 10
+  canShootWithoutMana: 0
 --- !u!82 &2852145985261478830
 AudioSource:
   m_ObjectHideFlags: 0

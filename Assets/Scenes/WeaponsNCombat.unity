@@ -74855,12 +74855,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3718979593581492089, guid: db43789a82c782e44b24005807438a62, type: 3}
+      propertyPath: ammoType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718979593581492089, guid: db43789a82c782e44b24005807438a62, type: 3}
       propertyPath: manaCost
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3718979593581492089, guid: db43789a82c782e44b24005807438a62, type: 3}
       propertyPath: canShootWithoutMana
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6425162713936494338, guid: db43789a82c782e44b24005807438a62, type: 3}
       propertyPath: m_LocalPosition.x
