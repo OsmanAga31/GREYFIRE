@@ -4865,7 +4865,7 @@ GameObject:
   - component: {fileID: 2605829018330549104}
   m_Layer: 6
   m_Name: CrystalProjectile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9758,6 +9758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b732b32982d0fb645b5e7e9e7b706e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageType: 0
   hitEffect: {fileID: 0}
   damage: 25
   speed: 20
@@ -9769,6 +9770,7 @@ MonoBehaviour:
   lookRotation: 0
   isDangerous: 1
   destroyOnHit: 1
+  isPlayerProjectile: 1
 --- !u!54 &-1274456550644077337
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9809,7 +9811,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 200
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

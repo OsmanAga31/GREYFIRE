@@ -40,7 +40,9 @@ public class OrbThrower : GrenadeThrower
         }
         grenade.transform.LookAt(throwDirection); // Make the grenade face the throw direction
         grenade.transform.Rotate(90f, 0f, 0f); // Rotate the grenade to align with the throw direction
-        grenade.GetComponent<Projectile>().Shoot(); // Call the Shoot method to apply the force
+        var projectile = grenade.GetComponent<Projectile>();
+        projectile.isPlayerProjectile = true; // Set the projectile as a player projectile
+        projectile.Shoot(); // Call the Shoot method to apply the force
 
     }
 }

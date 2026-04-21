@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7977363084031253621}
   - component: {fileID: 7981062156677015733}
   - component: {fileID: 7993334754440809487}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7974355325061550731}
   - component: {fileID: 7984756387646886655}
   - component: {fileID: 7993360653940145943}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 7977392587031591807}
   - component: {fileID: 7984302608379200289}
   - component: {fileID: 7992742258399449255}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 7977198404828897449}
   - component: {fileID: 7980966248768957237}
   - component: {fileID: 7992649837299898973}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 7977123264454855983}
   - component: {fileID: 7984030527237282009}
   - component: {fileID: 7992123728998461377}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 7977312901270427615}
   - component: {fileID: 7981149193748997631}
   - component: {fileID: 7993601892049375899}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7977076686649815735}
   - component: {fileID: 8863098896932840113}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,13 +573,18 @@ MonoBehaviour:
   range: 100
   fireRate: 2
   impactForce: 2
+  ammoType: 0
   ammo: 0
+  playerInput: {fileID: 0}
   fpsCam: {fileID: 0}
   muzzleFlash: {fileID: 2071443923518615339}
   impactEffect: {fileID: 1000012142692022, guid: a475880e7da0e9548aa05cb7933752cd, type: 3}
   ammoText: {fileID: 0}
   weaponNameText: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
+  shootAudioSource: {fileID: 0}
+  shootClip: []
+  emptyClip: {fileID: 0}
 --- !u!1 &7980158182202023279
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +596,7 @@ GameObject:
   - component: {fileID: 7974460991634943547}
   - component: {fileID: 7981076733241665367}
   - component: {fileID: 7991671003370799263}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +682,7 @@ GameObject:
   - component: {fileID: 7974650933172171797}
   - component: {fileID: 7984861749494858923}
   - component: {fileID: 7993466211905125549}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: P_Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000011227296186, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_LocalScale.x

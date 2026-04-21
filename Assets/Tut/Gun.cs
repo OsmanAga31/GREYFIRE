@@ -124,9 +124,9 @@ public class Gun : MonoBehaviour, IItemAdder
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~LayerMask.GetMask("Player")))
         {
-            //Debug.Log(hit.transform.name);
+            Debug.Log("hitted: " + hit.transform.name);
             Target target = hit.transform.GetComponent<Target>();
             Vector3 hitDirection = (hit.point - fpsCam.transform.position).normalized;
             if (target != null)
@@ -160,7 +160,7 @@ public class Gun : MonoBehaviour, IItemAdder
     public void Add(int amount, AmmoType type)
     {
         Ammo += amount;
-        if (type == ammoType)
+        if ((int)type == (int)ammoType)
         {
             ammoText.text = Ammo.ToString();
         }

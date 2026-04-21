@@ -3,7 +3,7 @@ using UnityEngine;
 public class AmmoPack : MonoBehaviour, ICollectable
 {
     [Header("Ammo Settings")]
-    [SerializeField] private AmmoType itemType = AmmoType.RifleAmmo;
+    [SerializeField] private AmmoType itemType;
     [SerializeField] private int collectAmount = 30;
     [SerializeField] private AudioClip[] collectSound;
     public void Collect(InventoryManager inventory)

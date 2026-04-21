@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private DamageType damageType = DamageType.Ballistic; // Type of damage dealt by the projectile, used for damage calculations and resistances
     public GameObject hitEffect; // Particle system to play on hit
     [SerializeField] private float damage; // Damage dealt by the projectile on hit
     [SerializeField] private float speed; // Speed of the projectile
@@ -20,7 +21,7 @@ public class Projectile : MonoBehaviour
     
     [SerializeField] private bool isDangerous = true;
     [SerializeField] private bool destroyOnHit = true; // Whether the projectile should be destroyed on hit, set to false for projectiles that should persist after hitting something (like piercing bullets or grenades that explode after a delay)
-                                                       // Hit effects and sounds
+    public bool isPlayerProjectile = false; // Whether the projectile was fired by the player
 
     private Collider[] results; // Array to store results of area of effect damage checks
     private int lastHintCount = 0;
@@ -66,9 +67,17 @@ public class Projectile : MonoBehaviour
     {
         // Apply force to the projectile forward based on its speed with Rigidbody physics
         rb.linearVelocity = transform.up * speed;
+        //rb.linearVelocity = direction.normalized * speed;
 
         //Vector3 direction = rb.linearVelocity.normalized;
         //transform.localRotation = direction == Vector3.zero ? Quaternion.identity : Quaternion.LookRotation(direction);
+    }
+
+    public void Shoot(DamageType damageType, float damage)
+    {
+        this.damageType = damageType;
+        this.damage = damage;
+        Shoot();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -97,10 +106,29 @@ public class Projectile : MonoBehaviour
 
     private void DoDamage(Collider other, float damage)
     {
-        // If the hit object has an IDamagable interface, apply damage to it
-        if (other.gameObject.TryGetComponent<Target>(out Target target))
+        if (isPlayerProjectile)
         {
-            target.TakeDamage(damage);
+            // If the hit object has an IDamagable interface, apply damage to it
+            if (other.gameObject.TryGetComponent<Target>(out Target target))
+            {
+                target.TakeDamage(damage, damageType);
+            }
+        }
+        else
+        {
+            // If the hit object has an IDamagable interface, apply damage to it
+            if (other.gameObject.TryGetComponent<Health>(out Health health))
+            {
+                health.TakeDamage(damage, damageType);
+            }
+        }
+    }
+    private void DoDamage(Collider other, float damage, DamageType damageType)
+    {
+        // If the hit object has an IDamagable interface, apply damage to it
+        if (other.gameObject.TryGetComponent<Health>(out Health health))
+        {
+            health.TakeDamage(damage, damageType);
         }
     }
 

@@ -74,8 +74,13 @@ public class GunMagic : Gun
         yield return new WaitForSeconds(projDelay); // Delay to sync with shooting animation
         RaycastHit hit;
         Vector3 hitPos;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~LayerMask.GetMask("Player")))
         {
+            Debug.Log("hitted: " + hit.transform.name);
+            if (hit.collider.CompareTag("Bullet"))
+            {
+                hitPos = transform.position + transform.forward * range; // If it hits another bullet, shoot straight ahead
+            }
             hitPos = hit.point;
         }
         else
@@ -86,6 +91,8 @@ public class GunMagic : Gun
         GameObject projectileGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity);
         projectileGO.transform.LookAt(hitPos);
         projectileGO.transform.Rotate(90f, 0f, 0f); // Rotate the projectile to face the correct direction
+
+
         Projectile proj = projectileGO.GetComponent<Projectile>();
         proj.Shoot();
         proj.hitEffect = impactEffect;

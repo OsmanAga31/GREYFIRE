@@ -8,6 +8,8 @@ TagManager:
   - damagetext
   - enemy
   - Collectable
+  - Undefined
+  - Bullet
   layers:
   - Default
   - TransparentFX
