@@ -45,3 +45,10 @@ Or download as ZIP: Go to the repository page → click Code → Download ZIP �
  6. Have fun!
  7. Press "Alt + F4" to exit the game :)
 
+### Controls
+- Move: WASD
+- Look around: Mouse
+- Shoot: Left/Right mouse 
+- Melee attack: V
+- Throw grenade: Q
+
