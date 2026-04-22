@@ -35,3 +35,13 @@ Or download as ZIP: Go to the repository page → click Code → Download ZIP �
  3. Press the Play button at the top of the Editor
  4. Have Fun! 
 
+### Alternative Download
+
+ 1. Press the "Releases" button on the right sigh of the Repository page
+ 2. If necessary: Click "Assets" to expand
+ 3. Click GREYFIRE.zip
+ 4. Extract the ZIP to a folder of your choice
+ 5. Double click "GREYFIRE.exe" in the "Build" folder
+ 6. Have fun!
+ 7. Press "Alt + F4" to exit the game :)
+
