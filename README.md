@@ -48,7 +48,9 @@ Or download as ZIP: Go to the repository page → click Code → Download ZIP �
 ### Controls
 - Move: WASD
 - Look around: Mouse
-- Shoot: Left/Right mouse 
+- Shoot: Left mouse button
+- Throw magic orb: Right mouse button
 - Melee attack: V
 - Throw grenade: Q
+- Change weapon: Mous wheel or number keys (1, 2, ...)
 
