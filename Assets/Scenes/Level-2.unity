@@ -1839,7 +1839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1042573775762928977, guid: db43789a82c782e44b24005807438a62, type: 3}
       propertyPath: manaRegenRate
-      value: 0.75
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1478484301138620638, guid: db43789a82c782e44b24005807438a62, type: 3}
       propertyPath: m_LocalPosition.x
