@@ -23,9 +23,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private bool destroyOnHit = true; // Whether the projectile should be destroyed on hit, set to false for projectiles that should persist after hitting something (like piercing bullets or grenades that explode after a delay)
     public bool isPlayerProjectile = false; // Whether the projectile was fired by the player
 
-    private Collider[] results; // Array to store results of area of effect damage checks
-    private int lastHintCount = 0;
-    
     private void Start()
     {
         if (rb == null)

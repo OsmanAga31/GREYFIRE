@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Melee : MonoBehaviour
 {
-    [SerializeField] private Collider collider;
+    [SerializeField] private Collider col;
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerInput playerInput;
 
@@ -14,7 +14,7 @@ public class Melee : MonoBehaviour
 
     private void OnEnable()
     {
-        collider.enabled = false;
+        col.enabled = false;
 
         playerInput.actions["Melee"].performed += OnMelee;
     }
@@ -27,7 +27,7 @@ public class Melee : MonoBehaviour
     private void OnMelee(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
-        collider.enabled = true;
+        col.enabled = true;
         animator.SetBool("doSwing", false);
         StartCoroutine(DoSwing());
     }
@@ -41,7 +41,7 @@ public class Melee : MonoBehaviour
 
     private void OnSwingEnd()
     {
-        collider.enabled = false;
+        col.enabled = false;
         animator.SetBool("doSwing", false);
         Debug.Log("Swing ended, collider disabled.");
     }

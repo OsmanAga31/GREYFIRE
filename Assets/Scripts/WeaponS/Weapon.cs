@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem ps;
 
     [Header("Weapon Behavior")] 
-    [SerializeField] private bool canHitPlayer = false;
+    //[SerializeField] private bool canHitPlayer = false;
     [SerializeField] private bool lookAtCrosshair = true;
     [SerializeField] private bool autoFire = true;
     [SerializeField] private WeaponData wd40;

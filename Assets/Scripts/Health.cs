@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour, IDamagable, IItemAdder
 {
@@ -9,7 +10,12 @@ public class Health : MonoBehaviour, IDamagable, IItemAdder
     
     [SerializeField] private HealthDisplay healthDisplay; // Helper class to manage health display UI
     [SerializeField] private bool isVulnerable = false; // Flag to indicate if the object is currently vulnerable
-    [SerializeField] protected Animator animator; // Reference to the Animator component for playing damage animations
+    public bool IsVulnerable
+    {
+        get { return isVulnerable; }
+        set { isVulnerable = value; }
+    }
+    [SerializeField] protected Animator animator; // Reference to the Animator component for playing damage animations, this is optional and can be null if no animations are used
     [SerializeField] private float damageEffectDuration = 0.1f; // Duration for visual feedback when taking damage
     
     [Header("Damage Type Settings")]
@@ -31,15 +37,14 @@ public class Health : MonoBehaviour, IDamagable, IItemAdder
         objectRenderer = GetComponentInChildren<Renderer>();
     }
     
-    public bool IsVulnerable
-    {
-        get { return isVulnerable; }
-        set { isVulnerable = value; }
-    }
     
     public virtual void TakeDamage(float damageAmount, DamageType damageType)
     {
-        Debug.Log($"{gameObject.name} took " + damageAmount + " damage!");
+        if (!isVulnerable)
+        {
+            return; // Exit early if the object is not vulnerable
+        }
+        //Debug.Log($"{gameObject.name} took " + damageAmount + " damage!");
         // Implement health reduction logic here
         HandleDamageType(damageType);
         health -= damageAmount * damageMultiplier; // Apply damage multiplier to adjust damage taken
@@ -70,12 +75,14 @@ public class Health : MonoBehaviour, IDamagable, IItemAdder
     public virtual void Die()
     {
         Debug.Log($"{gameObject.name} has died!");
-        PlayDeathAnimation(); // Play death animation
-        
-        // TODO Implement additional death logic here, such as disabling the object or triggering a respawn
-        
+        //PlayDeathAnimation(); // Play death animation
+
+        // Implement additional death logic here, such as disabling the object or triggering a respawn
+
+        // Reload the current scene 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
+
     public virtual void PlayDamageEffect()
     {
         if (objectRenderer != null)

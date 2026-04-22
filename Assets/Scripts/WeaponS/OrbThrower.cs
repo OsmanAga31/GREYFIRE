@@ -8,12 +8,12 @@ public class OrbThrower : GrenadeThrower
     [SerializeField] private float manaCost = 50f; // Mana cost for throwing an orb
     [SerializeField] private bool canThrowWithoutMana = false; // Option to allow throwing without mana
 
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
         playerInput.actions["AltAttack"].performed += OnThrow;
     }
 
-    protected virtual void OnDisable()
+    protected override void OnDisable()
     {
         playerInput.actions["AltAttack"].performed -= OnThrow;
     }

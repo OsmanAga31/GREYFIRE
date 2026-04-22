@@ -2161,22 +2161,6 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 8082535027207451984}
-    - target: {fileID: 3841046472536553272, guid: 07fe43f98ff585c4c8c5c43fd7b016f2, type: 3}
-      propertyPath: m_Size.z
-      value: 3.564651
-      objectReference: {fileID: 0}
-    - target: {fileID: 3841046472536553272, guid: 07fe43f98ff585c4c8c5c43fd7b016f2, type: 3}
-      propertyPath: m_Center.x
-      value: 0.001390956
-      objectReference: {fileID: 0}
-    - target: {fileID: 3841046472536553272, guid: 07fe43f98ff585c4c8c5c43fd7b016f2, type: 3}
-      propertyPath: m_Center.y
-      value: -0.000041916166
-      objectReference: {fileID: 0}
-    - target: {fileID: 3841046472536553272, guid: 07fe43f98ff585c4c8c5c43fd7b016f2, type: 3}
-      propertyPath: m_Center.z
-      value: 1.9586949
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

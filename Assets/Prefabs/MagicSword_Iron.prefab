@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6062ab01976f644aadff8d2a70ebfa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 3841046472536553272}
+  col: {fileID: 3841046472536553272}
   animator: {fileID: 6737559614457417373}
   playerInput: {fileID: 0}
   damage: 15
@@ -147,8 +147,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.34008226, y: 0.13720773, z: 2.9913428}
-  m_Center: {x: 0.0013916676, y: -0.000032945107, z: 1.6720304}
+  m_Size: {x: 0.34008226, y: 0.13720773, z: 3.564651}
+  m_Center: {x: 0.001390956, y: -0.000041916166, z: 1.9586949}
 --- !u!54 &2915136030392873627
 Rigidbody:
   m_ObjectHideFlags: 0

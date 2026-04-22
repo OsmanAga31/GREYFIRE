@@ -14,7 +14,10 @@ public class EnemyMover : Target
     private bool doPause;
     Coroutine patrolPauseCoroutine;
     [SerializeField] private Transform chaseTarget;
-    public Transform ChaseTarget => chaseTarget;
+    public Transform ChaseTarget { 
+        get { return chaseTarget; } 
+        set { chaseTarget = value; }
+    }
     [SerializeField] private float minDistanceToTarget = 10f; // Distance at which the enemy will start chasing the target
     public float MinDistanceToTarget
     {
