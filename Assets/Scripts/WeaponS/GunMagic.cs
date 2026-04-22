@@ -76,7 +76,7 @@ public class GunMagic : Gun
         Vector3 hitPos;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~LayerMask.GetMask("Player")))
         {
-            Debug.Log("hitted: " + hit.transform.name);
+            //Debug.Log("hitted: " + hit.transform.name);
             if (hit.collider.CompareTag("Bullet"))
             {
                 hitPos = transform.position + transform.forward * range; // If it hits another bullet, shoot straight ahead

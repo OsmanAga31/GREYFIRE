@@ -4853,6 +4853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b732b32982d0fb645b5e7e9e7b706e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageType: 0
   hitEffect: {fileID: 2965222256817593503, guid: a164e676dbbd6e54587237e619372c98, type: 3}
   damage: 50
   speed: 5
@@ -4864,6 +4865,7 @@ MonoBehaviour:
   lookRotation: 0
   isDangerous: 1
   destroyOnHit: 0
+  isPlayerProjectile: 1
 --- !u!54 &-653897520913579342
 Rigidbody:
   m_ObjectHideFlags: 0

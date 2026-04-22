@@ -524,9 +524,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMage Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5813579595695056133, guid: 6b762d449a426f8419dd84fd16a8d873, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1497004910280867774, guid: 6b762d449a426f8419dd84fd16a8d873, type: 3}
+    - {fileID: 8236477263297441775, guid: 6b762d449a426f8419dd84fd16a8d873, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1585423949240891375, guid: 6b762d449a426f8419dd84fd16a8d873, type: 3}
       insertIndex: -1
@@ -573,7 +575,7 @@ MonoBehaviour:
   rangedAttackDamage: 15
   rangedAttackRange: 25
   rangedAttackCooldown: 1
-  projectilePrefab: {fileID: 5719767421920996291, guid: aa4bfba1a48b8a24d82c01e6744ca794, type: 3}
+  projectilePrefab: {fileID: 2039931678086111586, guid: 0c32ca8ec91f5524c82c2f9e6890c339, type: 3}
   projectileSpawnPoints:
   - {fileID: 8842274972009622666}
   weaponParent: {fileID: 683496360488124518}

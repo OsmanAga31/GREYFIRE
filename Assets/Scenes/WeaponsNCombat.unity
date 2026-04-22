@@ -998,6 +998,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &159049367
 GameObject:
   m_ObjectHideFlags: 0
@@ -43910,6 +43913,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &421677747
 GameObject:
   m_ObjectHideFlags: 0
@@ -58585,6 +58591,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1525759033
 GameObject:
   m_ObjectHideFlags: 0
@@ -73380,6 +73389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2022828784
 GameObject:
   m_ObjectHideFlags: 0

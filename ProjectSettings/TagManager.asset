@@ -10,6 +10,8 @@ TagManager:
   - Collectable
   - Undefined
   - Bullet
+  - KeyCard
+  - KeyPad
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - PlayerGun
   - Enemy
   - Ground
-  - 
-  - 
+  - KeyCard
+  - KeyPad
   - 
   - 
   - 

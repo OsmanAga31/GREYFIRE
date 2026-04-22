@@ -126,7 +126,7 @@ public class Gun : MonoBehaviour, IItemAdder
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~LayerMask.GetMask("Player")))
         {
-            Debug.Log("hitted: " + hit.transform.name);
+            //Debug.Log("hitted: " + hit.transform.name);
             Target target = hit.transform.GetComponent<Target>();
             Vector3 hitDirection = (hit.point - fpsCam.transform.position).normalized;
             if (target != null)

@@ -108,7 +108,6 @@ public class Projectile : MonoBehaviour
     {
         if (isPlayerProjectile)
         {
-            // If the hit object has an IDamagable interface, apply damage to it
             if (other.gameObject.TryGetComponent<Target>(out Target target))
             {
                 target.TakeDamage(damage, damageType);
@@ -116,7 +115,6 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            // If the hit object has an IDamagable interface, apply damage to it
             if (other.gameObject.TryGetComponent<Health>(out Health health))
             {
                 health.TakeDamage(damage, damageType);

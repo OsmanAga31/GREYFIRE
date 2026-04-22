@@ -109,17 +109,17 @@ public class EnemyMover : Target
         {
             int randomIndex = Random.Range(0, DeathAnimations.Length);
             animator.Play(DeathAnimations[randomIndex].name); // Play a random death animation
-            Debug.Log($"RND Playing death animation: {DeathAnimations[randomIndex].name} for {gameObject.name}; DeathAnimation counts: {DeathAnimations.Length}");
         }
         else if (DeathAnimations.Length == 1)
         {
             animator.Play(DeathAnimations[0].name); // Play the single assigned death animation
-            Debug.Log($"Single Playing death animation: {DeathAnimations[0].name} for {gameObject.name}; DeathAnimation counts: {DeathAnimations.Length}");
         }
         else
         {
             Debug.LogWarning($"No death animations assigned to the {gameObject.name}.");
         }
+
+        OnDeath.Invoke(); // Trigger the OnDeath event
     }
 
 
@@ -133,11 +133,11 @@ public class EnemyMover : Target
             {
                 if (!hit.collider.CompareTag("Player"))
                 {
-                    Debug.Log($"{gameObject.name} cannot see the player due to an obstacle: {hit.collider.name}");
+                    //Debug.Log($"{gameObject.name} cannot see the player due to an obstacle: {hit.collider.name}");
                     return; // Player is not visible, do not chase
                 }
 
-                Debug.Log($"Player detected by {gameObject.name}!");
+                //Debug.Log($"Player detected by {gameObject.name}!");
                 chaseTarget = other.transform;
                 agent.destination = chaseTarget.position;
 

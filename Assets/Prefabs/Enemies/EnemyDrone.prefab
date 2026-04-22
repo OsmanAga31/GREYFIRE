@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693594546182707547}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0.01187, y: -0.00571, z: -0}
   m_LocalScale: {x: 0.03062506, y: 0.030625068, z: 0.030625068}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5187450163361088755}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!1 &1732033186132064237
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,13 +55,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732033186132064237}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: -0.00381, y: -0.00186, z: -0}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1408916768169000197}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!1 &8585299922179312438
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 495922449787798342}
   - component: {fileID: 7756422887492927541}
   - component: {fileID: 5775508712896559010}
+  - component: {fileID: 2106779107122083581}
   - component: {fileID: 4935505377590556463}
   - component: {fileID: 3983290748162539257}
   m_Layer: 8
@@ -134,11 +135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   agent: {fileID: 495922449787798342}
-  patrollpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrollpoints: []
   patrolPointRadius: 1.75
   doPatrolPause: 1
   patrolPauseDuration: 5
@@ -178,6 +179,22 @@ MonoBehaviour:
   meleeWeapon: {fileID: 0}
   animator: {fileID: 0}
   meleeAttackAnimations: []
+--- !u!114 &2106779107122083581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8585299922179312438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02d8183c61488f489b7b7e789d6e280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8647233754798379365}
+  navMeshAgent: {fileID: 495922449787798342}
+  enemyMover: {fileID: 7756422887492927541}
+  enemyAttacker: {fileID: 5775508712896559010}
 --- !u!135 &4935505377590556463
 SphereCollider:
   m_ObjectHideFlags: 0
